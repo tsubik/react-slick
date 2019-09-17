@@ -195,23 +195,23 @@ export class InnerSlider extends React.Component {
     this.debouncedResize();
   };
   resizeWindow = (setTrackStyle = true) => {
-    if (!ReactDOM.findDOMNode(this.track)) return;
-    let spec = {
-      listRef: this.list,
-      trackRef: this.track,
-      ...this.props,
-      ...this.state
-    };
-    this.updateState(spec, setTrackStyle, () => {
-      if (this.props.autoplay) this.autoPlay("update");
-      else this.pause("paused");
-    });
-    // animating state should be cleared while resizing, otherwise autoplay stops working
-    this.setState({
-      animating: false
-    });
-    clearTimeout(this.animationEndCallback);
-    delete this.animationEndCallback;
+    /* if (!ReactDOM.findDOMNode(this.track)) return;
+     * let spec = {
+     *   listRef: this.list,
+     *   trackRef: this.track,
+     *   ...this.props,
+     *   ...this.state
+     * };
+     * this.updateState(spec, setTrackStyle, () => {
+     *   if (this.props.autoplay) this.autoPlay("update");
+     *   else this.pause("paused");
+     * }); */
+    //animating state should be cleared while resizing, otherwise autoplay stops working
+    /* this.setState({
+     *   animating: false
+     * });
+     * clearTimeout(this.animationEndCallback);
+     * delete this.animationEndCallback; */
   };
   updateState = (spec, setTrackStyle, callback) => {
     let updatedState = initializedState(spec);
@@ -709,7 +709,7 @@ export class InnerSlider extends React.Component {
     let innerSliderProps = {
       className: className,
       dir: "ltr",
-      style:this.props.style
+      style: this.props.style
     };
 
     if (this.props.unslick) {
